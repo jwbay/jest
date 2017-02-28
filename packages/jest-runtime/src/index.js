@@ -91,11 +91,7 @@ class Runtime {
   _unmockList: ?RegExp;
   _virtualMocks: BooleanObject;
 
-  constructor(
-    config: Config,
-    environment: Environment,
-    resolver: Resolver,
-  ) {
+  constructor(config: Config, environment: Environment, resolver: Resolver) {
     this._moduleRegistry = Object.create(null);
     this._internalModuleRegistry = Object.create(null);
     this._mockRegistry = Object.create(null);
@@ -198,6 +194,7 @@ class Runtime {
       cacheDirectory: config.cacheDirectory,
       console: options && options.console,
       extensions: [SNAPSHOT_EXTENSION].concat(config.moduleFileExtensions),
+      hasteImplModulePath: config.haste.hasteImplModulePath,
       ignorePattern,
       maxWorkers: (options && options.maxWorkers) || 1,
       mocksPattern: escapePathForRegex(path.sep + '__mocks__' + path.sep),

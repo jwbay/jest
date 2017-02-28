@@ -13,7 +13,7 @@
 export type Location = {
   column: number,
   line: number,
-}
+};
 
 import type ProjectWorkspace from './ProjectWorkspace';
 import type {ChildProcess} from 'child_process';
@@ -22,25 +22,25 @@ export type Options = {
   createProcess?: (
     workspace: ProjectWorkspace,
     args: Array<string>,
-  ) => ChildProcess
-}
+  ) => ChildProcess,
+};
 
 export type JestFileResults = {
   name: string,
   summary: string,
   message: string,
-  status: "failed" | "passed",
+  status: 'failed' | 'passed',
   startTime: number,
   endTime: number,
   assertionResults: Array<JestAssertionResults>,
-}
+};
 
 export type JestAssertionResults = {
   name: string,
   title: string,
-  status: "failed" | "passed",
+  status: 'failed' | 'passed',
   failureMessages: string[],
-}
+};
 
 export type JestTotalResults = {
   success: boolean,
@@ -52,18 +52,15 @@ export type JestTotalResults = {
   numFailedTests: number,
   numPendingTests: number,
   testResults: Array<JestFileResults>,
-}
+};
 
 /**
  *  Did the thing pass, fail or was it not run?
  */
-export type TestReconcilationState =
-  /** This could be the file has not changed, so the watcher didn't hit it */
-  | "Unknown"
-  /** Definitely failed */
-  | "KnownFail"
-  /** Definitely passed */
-  | "KnownSuccess"
+export type TestReconciliationState =
+  | 'Unknown' // The file has not changed, so the watcher didn't hit it
+  | 'KnownFail' // Definitely failed
+  | 'KnownSuccess'; // Definitely passed
 
 /**
  * The Jest Extension's version of a status for
@@ -73,9 +70,9 @@ export type TestReconcilationState =
 export type TestFileAssertionStatus = {
   file: string,
   message: string,
-  status: TestReconcilationState,
+  status: TestReconciliationState,
   assertions: Array<TestAssertionStatus>,
-}
+};
 
 /**
  * The Jest Extension's version of a status for
@@ -84,9 +81,9 @@ export type TestFileAssertionStatus = {
  */
 export type TestAssertionStatus = {
   title: string,
-  status: TestReconcilationState,
+  status: TestReconciliationState,
   message: string,
   shortMessage: ?string,
   terseMessage: ?string,
   line: ?number,
-}
+};

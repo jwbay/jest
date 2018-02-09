@@ -159,6 +159,7 @@ export type TestResult = {|
     updated: number,
   |},
   sourceMaps: {[sourcePath: string]: string},
+  needCoverageMapped: string[],
   testExecError?: SerializableError,
   testFilePath: string,
   testResults: Array<AssertionResult>,

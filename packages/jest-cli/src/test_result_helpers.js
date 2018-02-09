@@ -56,6 +56,7 @@ export const buildFailureTestResult = (
     displayName: '',
     failureMessage: null,
     leaks: false,
+    needCoverageMapped: [],
     numFailingTests: 0,
     numPassingTests: 0,
     numPendingTests: 0,

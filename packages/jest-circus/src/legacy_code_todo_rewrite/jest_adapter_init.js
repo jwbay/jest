@@ -130,6 +130,7 @@ export const runAndTransformResultsToJestFormat = async ({
     displayName: config.displayName,
     failureMessage,
     leaks: false, // That's legacy code, just adding it so Flow is happy.
+    needCoverageMapped: [],
     numFailingTests,
     numPassingTests,
     numPendingTests,

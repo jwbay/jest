@@ -105,7 +105,6 @@ async function runTestInternal(
     collectCoverage: globalConfig.collectCoverage,
     collectCoverageFrom: globalConfig.collectCoverageFrom,
     collectCoverageOnlyFrom: globalConfig.collectCoverageOnlyFrom,
-    mapCoverage: globalConfig.mapCoverage,
   });
 
   const start = Date.now();
@@ -125,6 +124,7 @@ async function runTestInternal(
     result.testFilePath = path;
     result.coverage = runtime.getAllCoverageInfoCopy();
     result.sourceMaps = runtime.getSourceMapInfo();
+    result.needCoverageMapped = runtime.getFilesNeedingCoverageMapping();
     result.console = testConsole.getBuffer();
     result.skipped = testCount === result.numPendingTests;
     result.displayName = config.displayName;

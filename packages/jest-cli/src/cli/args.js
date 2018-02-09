@@ -303,13 +303,6 @@ export const options = {
       'node.',
     type: 'boolean',
   },
-  mapCoverage: {
-    default: undefined,
-    description:
-      'Maps code coverage reports against original source code ' +
-      'when transformers supply source maps.',
-    type: 'boolean',
-  },
   maxWorkers: {
     alias: 'w',
     description:

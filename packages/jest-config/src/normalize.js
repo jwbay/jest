@@ -477,7 +477,6 @@ export default function normalize(options: InitialOptions, argv: Argv) {
       case 'lastCommit':
       case 'listTests':
       case 'logHeapUsage':
-      case 'mapCoverage':
       case 'moduleFileExtensions':
       case 'name':
       case 'noStackTrace':

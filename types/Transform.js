@@ -17,6 +17,7 @@ export type TransformedSource = {|
 
 export type TransformResult = {|
   script: Script,
+  mapCoverage: boolean,
   sourceMapPath: ?string,
 |};
 
@@ -26,7 +27,6 @@ export type TransformOptions = {|
 
 export type CacheKeyOptions = {|
   instrument: boolean,
-  mapCoverage: boolean,
   rootDir: string,
 |};
 

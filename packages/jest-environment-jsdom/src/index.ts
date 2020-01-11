@@ -14,7 +14,7 @@ import {
   LolexFakeTimers,
 } from '@jest/fake-timers';
 import {EnvironmentContext, JestEnvironment} from '@jest/environment';
-import {JSDOM, VirtualConsole} from 'jsdom';
+import {JSDOM} from 'jsdom';
 
 // The `Window` interface does not have an `Error.stackTraceLimit` property, but
 // `JSDOMEnvironment` assumes it is there.
@@ -34,6 +34,7 @@ class JSDOMEnvironment implements JestEnvironment {
   moduleMocker: ModuleMocker | null;
 
   constructor(config: Config.ProjectConfig, options: EnvironmentContext = {}) {
+    const {JSDOM, VirtualConsole} = this.getFreshJSDom();
     this.dom = new JSDOM('<!DOCTYPE html>', {
       pretendToBeVisual: true,
       runScripts: 'dangerously',
@@ -97,6 +98,15 @@ class JSDOMEnvironment implements JestEnvironment {
     });
 
     this.fakeTimersLolex = new LolexFakeTimers({config, global});
+  }
+
+  private getFreshJSDom(): typeof import('jsdom') {
+    Object.keys(require.cache)
+      .filter(modulePath => modulePath.includes('/node_modules/jsdom/lib/'))
+      .forEach(jsdomModule => {
+        delete require.cache[jsdomModule];
+      });
+    return require('jsdom');
   }
 
   async setup() {}
